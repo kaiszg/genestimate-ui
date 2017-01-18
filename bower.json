@@ -1,8 +1,8 @@
 {
-  "name": "angular-seed",
-  "description": "A starter project for AngularJS",
+  "name": "genestimate",
+  "description": "Client application for Genestimate project.",
   "version": "0.0.0",
-  "homepage": "https://github.com/angular/angular-seed",
+  "homepage": "https://github.com/kaiszg/genestimate-ui",
   "license": "MIT",
   "private": true,
   "dependencies": {
