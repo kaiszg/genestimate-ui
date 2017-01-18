@@ -1,3 +1,3 @@
-# `angular-seed` — the seed for AngularJS apps
+# `Genestimate` — client application
 
 This Project is the client application for Genestimate project built with AngularJS.
