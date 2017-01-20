@@ -4,7 +4,7 @@
 angular.module('genestimate', [
   'ngRoute',
   'genestimate.login',
-  'genestimate.view2',
+  'genestimate.order',
   'genestimate.version'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {

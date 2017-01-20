@@ -14,6 +14,6 @@ angular.module('genestimate.login', ['ngRoute'])
 	self.email = '';
 	self.password = '';
 	self.login = function(){
-		$location.path('/view2');
+		$location.path('/order');
 	}
 }]);
