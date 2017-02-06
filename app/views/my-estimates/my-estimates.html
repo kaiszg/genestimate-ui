@@ -1,0 +1,31 @@
+<div>
+    <div class="col-xs-12">
+        <div class="page-header">
+            <h1>Estimates list</h1>
+        </div>
+        <div class="col-xs-12">
+            <table id="estimates-list-table" class="table table-striped table-bordered table-hover table-responsive">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Number of pages</th>
+                    <th>Amount</th>
+                    <th>Details</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="estimate in estimatesList">
+                    <td>{{ estimate.id }}</td>
+                    <td>{{ estimate.properties.product.name }}</td>
+                    <td>{{ estimate.properties.quantity }}</td>
+                    <td>{{ estimate.properties.nbPages }}</td>
+                    <td>{{ estimate.price * 119 / 100 | number:2 }}</td>
+                    <td align="center"><a class="btn btn-primary" href ng-click="displayEstimateDetails(estimate)"><span class="fa fa-list-alt"></span></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
