@@ -1,0 +1,72 @@
+<div>
+    <div class="col-xs-12">
+        <div class="page-header">
+            <h1>Estimate
+                <small><strong>Nr. </strong>{{estimate.id}}</small>
+            </h1>
+        </div>
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-8">
+                    {{ estimate.properties.client.name }}<br>
+                    {{ estimate.properties.client.streetAndHouseNr }}<br>
+                    {{ estimate.properties.client.postalCode }} {{ estimate.properties.client.city }}<br>
+                    {{ estimate.properties.client.country }}
+                </div>
+                <div class="col-xs-4 pull-right">
+                    <p>
+                        <strong>Muster Druckerei GmbH</strong><br>
+                        Musterstraße 123<br>
+                        12345 Musterstadt<br>
+                        Deutschland
+                    </p>
+                    <p>
+                        Tel : +49 303 12345678<br>
+                        Fax : +49 303 12345687
+                    </p>
+                    <p>
+                        Email : contact@musterdruckerei.com
+                    </p>
+                </div>
+            </div>
+            <h3>{{ estimate.properties.product.name }}</h3>
+            <table class="table table-hover table-responsive">
+                <thead>
+                <tr>
+                    <th>Component</th>
+                    <th>Quantity</th>
+                    <th><span class="pull-right">Price</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="componentProperties in estimate.properties.componentsProperties">
+                    <td>{{ estimate.properties.nbPages }} {{ componentProperties.component.name }} - {{ componentProperties.rawMaterial.name }} - {{
+                        componentProperties.printingType.name }} - {{ estimate.properties.finalDimensions.length }} x {{ estimate.properties.finalDimensions.width }}
+                    </td>
+                    <td>{{ estimate.properties.quantity }}</td>
+                    <td><span class="pull-right">{{ componentProperties.price | number:2 }}</span></td>
+                </tr>
+                <tr>
+                    <td>Cover - {{ estimate.properties.coverRawMaterial.name }} - {{
+                        estimate.properties.coverPrintingType.name }} - {{ estimate.properties.finalDimensions.length }} x {{ estimate.properties.finalDimensions.width }} + Binding
+                    </td>
+                    <td>{{ estimate.properties.quantity }}</td>
+                    <td><span class="pull-right">{{ estimate.properties.coverPrintingPrice | number:2 }}</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Total :</strong></td>
+                    <td colspan="2"><span class="pull-right"><strong>{{ estimate.price | number:2 }}</strong></span></td>
+                </tr>
+                <tr>
+                    <td>MwSt 19%</td>
+                    <td colspan="2"><span class="pull-right">{{ estimate.price * 19 / 100 | number:2 }}</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Final amount :</strong></td>
+                    <td colspan="2"><span class="pull-right"><strong>{{ estimate.price * 119 / 100 | number:2 }}</strong></span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
