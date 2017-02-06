@@ -9,11 +9,24 @@ angular.module('genestimate.login', ['ngRoute'])
   });
 }])
 
-.controller('LoginCtrl', ['$location', function($location) {
-	var self = this;
-	self.email = '';
-	self.password = '';
-	self.login = function(){
-		$location.path('/order');
-	}
+.controller('LoginCtrl', ['$log', '$location', '$scope', 'AuthService', function($log, $location, $scope, AuthService) {
+
+	$scope.user={
+		username : '',
+		password : ''
+	};
+
+	$scope.unvalid = false;
+
+    $scope.login = function () {
+        AuthService.login($scope.user).then(function (response) {
+            AuthService.setAuthData(response.data);
+            if(AuthService.isAuthenticated()){
+                $location.path('/order');
+			}else{
+                $log.error("Login not valid");
+                $scope.unvalid = true;
+			}
+        });
+    };
 }]);
