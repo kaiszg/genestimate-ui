@@ -1,0 +1,50 @@
+<div>
+    <div class="col-xs-12">
+        <div class="page-header">
+            <h1>Estimate details
+                <span class="label label-primary">Nr. {{ estimate.id }}</span>
+            </h1>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <label>Client :</label><br>
+                {{ estimate.properties.client.name }}<br>
+                {{ estimate.properties.client.streetAndHouseNr }}<br>
+                {{ estimate.properties.client.postalCode }} {{ estimate.properties.client.city }}<br>
+                {{ estimate.properties.client.country }}<br>
+                {{ estimate.properties.client.phone }}<br>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <label>Product :</label> {{ estimate.properties.product.name }}<br>
+                <label>Final product dimensions :</label> {{ estimate.properties.finalDimensions.length }} x {{ estimate.properties.finalDimensions.width }}<br>
+                <label>Number of pages :</label> {{ estimate.properties.nbPages }}<br>
+                <label>Quantity :</label> {{ estimate.properties.quantity }}<br>
+                <h4><span class="label label-info">Total price : {{ estimate.price | number:2 }}</span></h4>
+            </div>
+        </div>
+        <div style="margin-top: 10pt">
+            <div class="col-xs-12 col-sm-6">
+                <h4><span class="label label-default">Cover + Assembly process</span></h4>
+                <label>Raw Material :</label> {{ estimate.properties.coverRawMaterial.name }}<br>
+                <label>Printing type :</label> {{ estimate.properties.coverPrintingType.name }}<br>
+                <label>Assembly process :</label><br>
+                <ul>
+                    <li ng-repeat="machine in estimate.properties.assemblyProcess">{{ machine.name }}</li>
+                </ul>
+                <label>Price :</label> {{ estimate.properties.coverPrintingPrice | number:2 }}
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div ng-repeat="componentProperties in estimate.properties.componentsProperties">
+                    <h4><span class="label label-default">{{ componentProperties.component.name }}</span></h4>
+                    <label>Raw Material :</label> {{ componentProperties.rawMaterial.name }}<br>
+                    <label>Printing Type :</label> {{ componentProperties.printingType.name }}<br>
+                    <label>Process :</label><br>
+                    <ul>
+                        <li ng-repeat="machine in componentProperties.process">{{ machine.name }}</li>
+                    </ul>
+                    <label>Price :</label> {{ componentProperties.price | number:2 }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
